@@ -9,4 +9,5 @@ export default {
     connectionString: env.DATABASE_URL,
   },
   tablesFilter: ["weyneshof_*"],
+  out: "./migrations",
 } satisfies Config;

@@ -1,7 +1,7 @@
 "use client";
 
 import Head from "next/head";
-import * as Sentry from "@sentry/nextjs";
+import {configureScope, startTransaction} from "@sentry/nextjs";
 
 export default function Page() {
   return (
@@ -49,11 +49,11 @@ export default function Page() {
             margin: "18px",
           }}
           onClick={async () => {
-            const transaction = Sentry.startTransaction({
+            const transaction = startTransaction({
               name: "Example Frontend Transaction",
             });
 
-            Sentry.configureScope((scope) => {
+            configureScope((scope) => {
               scope.setSpan(transaction);
             });
 
